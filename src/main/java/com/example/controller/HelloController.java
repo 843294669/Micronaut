@@ -9,6 +9,6 @@ public class HelloController {
 
     @Get(produces = MediaType.TEXT_PLAIN)
     public String index() {
-        return "Hello World";
+        return "/assets/js/index.js";
     }
 }

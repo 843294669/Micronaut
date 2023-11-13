@@ -8,8 +8,8 @@ version = "0.1"
 group = "com.example"
 
 repositories {
+//     maven { url 'https://maven.aliyun.com/repository/central' }
     maven { url 'https://repo1.maven.org/maven2' }
-//  maven { url 'https://maven.aliyun.com/repository/central' }
 //  MavenCentral 远程仓库：https://mvnrepository.com
 //  mavenCentral()
 //  google()
@@ -19,6 +19,8 @@ dependencies {
     annotationProcessor("io.micronaut:micronaut-http-validation")
     annotationProcessor('io.micronaut:micronaut-inject-java')
     implementation("io.micronaut:micronaut-jackson-databind")
+    implementation("io.micronaut:micronaut-http-server")
+    implementation("org.graalvm.js:js:1.0.0-rc15")
     compileOnly("io.micronaut:micronaut-http-client")
     runtimeOnly("ch.qos.logback:logback-classic")
     testImplementation("io.micronaut:micronaut-http-client")

@@ -6,9 +6,8 @@ import io.micronaut.http.annotation.Get;
 
 @Controller("/hello")
 public class HelloController {
-
     @Get(produces = MediaType.TEXT_PLAIN)
     public String index() {
-        return "/assets/js/index.js";
+        return "Hello world!";
     }
 }

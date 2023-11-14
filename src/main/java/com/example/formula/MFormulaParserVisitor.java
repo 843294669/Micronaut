@@ -33,7 +33,6 @@ public class MFormulaParserVisitor extends AbstractParseTreeVisitor<String> impl
 
     @Override
     public String visitCellName(FormulaParser.CellNameContext ctx) {
-        // 单元格名称为单元格的值
         String cellValue = cellMap.get(ctx.IDENTIFIER().getText().toUpperCase());
         if (cellValue == null) {
             return "null";
@@ -52,7 +51,6 @@ public class MFormulaParserVisitor extends AbstractParseTreeVisitor<String> impl
 
     @Override
     public String visitFunctionName(FormulaParser.FunctionNameContext ctx) {
-        // 替换函数名称
         return "formulajs." + ctx.IDENTIFIER().getText().toUpperCase();
     }
 

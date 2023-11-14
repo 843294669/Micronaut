@@ -20,7 +20,7 @@ import java.io.File;
 
 @Controller("/calculator")
 public class ExcelFormulaCalculatorController {
-    @Post("/")
+    @Post
     public CalculationResult calculate(@Body CalculationRequest request) {
         CalculationResult result = new CalculationResult();
         try (Context context = Context.create("js")) {

@@ -12,15 +12,15 @@ import io.micronaut.http.annotation.Post;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.TokenStream;
-import org.graalvm.polyglot.*;
+import org.graalvm.polyglot.Context;
+import org.graalvm.polyglot.Source;
+import org.graalvm.polyglot.Value;
 
 import java.io.File;
-import java.io.IOException;
-import java.util.Map;
 
 @Controller("/calculator")
 public class ExcelFormulaCalculatorController {
-    @Post("/sum")
+    @Post("/")
     public CalculationResult calculate(@Body CalculationRequest request) {
         CalculationResult result = new CalculationResult();
         try (Context context = Context.create("js")) {

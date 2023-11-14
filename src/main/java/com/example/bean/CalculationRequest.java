@@ -1,19 +1,17 @@
 package com.example.bean;
 
+import java.util.Map;
+
 public class CalculationRequest {
-    private double A1;
-    private double A2;
+    protected Map<String, String> cellMap;
+    private String formula;
 
-    public double getA1() {
-        return A1;
+    public Map<String, String> getCellMap() {
+        return cellMap;
     }
 
-    public double getA2() {
-        return A2;
-    }
-
-    public void setA2(double a2) {
-        A2 = a2;
+    public void setCellMap(Map<String, String> cellMap) {
+        this.cellMap = cellMap;
     }
 
     public String getFormula() {
@@ -24,10 +22,6 @@ public class CalculationRequest {
         this.formula = formula;
     }
 
-    public void setA1(double a1) {
-        A1 = a1;
-    }
 
-    private String formula;
 
 }

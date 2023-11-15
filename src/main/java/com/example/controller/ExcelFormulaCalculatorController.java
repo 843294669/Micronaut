@@ -10,8 +10,6 @@ import io.micronaut.http.annotation.Body;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Post;
 import org.antlr.v4.runtime.CharStreams;
-import org.antlr.v4.runtime.CommonTokenStream;
-import org.antlr.v4.runtime.TokenStream;
 import org.graalvm.polyglot.Context;
 import org.graalvm.polyglot.Source;
 import org.graalvm.polyglot.Value;
@@ -48,11 +46,9 @@ public class ExcelFormulaCalculatorController {
 
     private String parseFormula(CalculationRequest request) {
         FormulaLexer formulaLexer = new FormulaLexer(CharStreams.fromString(request.getFormula()));
-        TokenStream tokenStream = new CommonTokenStream(formulaLexer);
-        FormulaParser parser = new FormulaParser(tokenStream);
-        parser.addErrorListener(FormulaParserErrorListener.instance);
-        FormulaParser.FormulaContext context = parser.formula();
-        MFormulaParserVisitor parserVisitor = new MFormulaParserVisitor(request.getCellMap());
-        return parserVisitor.accept(context);
+        FormulaParser.FormulaContext context = formulaLexer.buildTokenStream().buildFormulaParser()
+                .addMErrorListener(FormulaParserErrorListener.instance)
+                .formula();
+        return new MFormulaParserVisitor(request.getCellMap()).accept(context);
     }
 }

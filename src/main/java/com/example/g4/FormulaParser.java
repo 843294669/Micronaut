@@ -986,4 +986,9 @@ public class FormulaParser extends Parser {
 			_decisionToDFA[i] = new DFA(_ATN.getDecisionState(i), i);
 		}
 	}
+
+	public FormulaParser addMErrorListener(ANTLRErrorListener listener) {
+		super.addErrorListener(listener);
+		return this;
+	}
 }
